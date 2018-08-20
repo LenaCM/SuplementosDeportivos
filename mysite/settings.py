@@ -39,13 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'facturaCompra.apps.FacturaCompraConfig',
-    'facturaVenta.apps.FacturaVentaConfig',
+    #'facturaCompra.apps.FacturaCompraConfig',
+    #'facturaVenta.apps.FacturaVentaConfig',
     'productos.apps.ProductosConfig',
-    'proveedores.apps.ProveedoresConfig',
-    'mediosDePago.apps.MediosdepagoConfig',
-    'tiposDeVenta.apps.TiposdeventaConfig',
-    
+    #'proveedores.apps.ProveedoresConfig',
+    #'mediosDePago.apps.MediosdepagoConfig',
+    #'tiposDeVenta.apps.TiposdeventaConfig',
+    #REST
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
