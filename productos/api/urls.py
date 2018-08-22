@@ -1,10 +1,7 @@
-from django.conf.urls import url, include
-from productos.api import views
-from rest_framework import routers
-
-router = routers.DefaultRouter()
-router.register(r'productos', views.ProductoViewSet)
+from django.urls import path, include
+from .views import ProductoRUD, ProductoCreate
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    path('', ProductoCreate.as_view(), name='producto-create'),
+    path('<int:pk>/', ProductoRUD.as_view(), name='producto-rud'),
 ]
