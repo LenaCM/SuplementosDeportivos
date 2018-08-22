@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     #'tiposDeVenta.apps.TiposdeventaConfig',
     #REST
     'rest_framework',
+    #Djangular
+    
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,16 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 #Auth redirect
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+#Configuracion REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+
