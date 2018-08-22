@@ -1,5 +1,7 @@
-from productos.models import Producto
+from django.db.models import Q 
 from rest_framework import generics, mixins
+
+from productos.models import Producto
 from .serializers import ProductoSerializer
 
 class ProductoCreate(mixins.CreateModelMixin, generics.ListAPIView):
@@ -8,8 +10,15 @@ class ProductoCreate(mixins.CreateModelMixin, generics.ListAPIView):
     serializer_class = ProductoSerializer
     
     def get_queryset(self):
-        return Producto.objects.all()
-    
+        qs =  Producto.objects.all()
+        query = self.request.GET.get("q")
+        if query is not None:
+            qs = qs.filter(
+                Q(nombre__icontains=query)|
+                Q(descripcion__icontains=query)
+            ).distinct()
+        return qs
+        
     def post(self,request,*args,**kwargs):
         return self.create(request,*args,**kwargs)
 
