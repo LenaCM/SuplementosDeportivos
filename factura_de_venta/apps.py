@@ -6,3 +6,9 @@ class FacturaVentaConfig(AppConfig):
 
 class FacturaVentaContieneProductosConfig(AppConfig):
     name = 'Facturas de Venta contiene productos' 
+
+class TipoDeVentaConfig(AppConfig):
+    name = 'Tipo de venta'
+    
+class MedioDePagoConfig(AppConfig):
+    name = 'Medio de pago'    
