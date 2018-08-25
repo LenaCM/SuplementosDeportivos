@@ -1,18 +1,18 @@
 from django.db.models import Q 
 from rest_framework import generics, mixins
 
-from productos.models import Producto
+from proveedores.models import Proveedor
 
 from .permissions import IsOwnerOrReadOnly
-from .serializers import ProductoSerializer
+from .serializers import ProveedorSerializer
 
-class ProductoLC(mixins.CreateModelMixin, generics.ListAPIView):
+class ProveedorLC(mixins.CreateModelMixin, generics.ListAPIView):
     
     lookup_field='pk'
-    serializer_class = ProductoSerializer
-    
+    serializer_class = ProveedorSerializer
+
     def get_queryset(self):
-        qs =  Producto.objects.all()
+        qs =  Proveedor.objects.all()
         query = self.request.GET.get("q")
         if query is not None:
             qs = qs.filter(
@@ -24,14 +24,10 @@ class ProductoLC(mixins.CreateModelMixin, generics.ListAPIView):
     def post(self,request,*args,**kwargs):
         return self.create(request,*args,**kwargs)
 
-class ProductoRUD(generics.RetrieveUpdateDestroyAPIView):
-    
+class ProveedorRUD(generics.RetrieveUpdateDestroyAPIView):
     lookup_field='pk'
-    serializer_class = ProductoSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = ProveedorSerializer
+    #permission_classes = [IsOwnerOrReadOnly]
     
     def get_queryset(self):
-        return Producto.objects.all().order_by('nombre')
-    
-
-    
+        return Proveedor.objects.all()

@@ -1,12 +1,14 @@
 from django.db import models
-from django.forms import ModelChoiceField
+from phonenumber_field.modelfields import PhoneNumberField
+#pip install django-phonenumber-field 
+#https://github.com/stefanfoulis/django-phonenumber-field ver como configurar (ej +41524204242)
 
 class Proveedor(models.Model):
-    idProveedor = models.AutoField(primary_key = True)
+    
     nombre = models.CharField(max_length=50)
-    telefono = models.CharField(max_length=50)
-    mail = models.CharField(max_length=50)
-    comentario = models.TextField()
+    telefono = PhoneNumberField()
+    mail = models.EmailField(max_length=254)
+    comentario = models.TextField(null=True, blank=True)
     
     class Meta:
         verbose_name = "Proveedor"

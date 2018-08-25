@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     #'facturaCompra.apps.FacturaCompraConfig',
     'factura_de_venta.apps.FacturaVentaConfig',
     'productos.apps.ProductosConfig',
-    #'proveedores.apps.ProveedoresConfig',
+    'proveedores.apps.ProveedoresConfig',
     #'mediosDePago.apps.MediosdepagoConfig',
     #REST
     'rest_framework',
