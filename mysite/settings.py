@@ -40,11 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     #'facturaCompra.apps.FacturaCompraConfig',
-    #'facturaVenta.apps.FacturaVentaConfig',
+    'factura_de_venta.apps.FacturaVentaConfig',
     'productos.apps.ProductosConfig',
     #'proveedores.apps.ProveedoresConfig',
     #'mediosDePago.apps.MediosdepagoConfig',
-    'tipos_de_venta.apps.TiposdeventaConfig',
     #REST
     'rest_framework',
     #Djangular
