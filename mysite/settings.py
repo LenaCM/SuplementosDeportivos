@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'productos.apps.ProductosConfig',
     #'proveedores.apps.ProveedoresConfig',
     #'mediosDePago.apps.MediosdepagoConfig',
-    #'tiposDeVenta.apps.TiposdeventaConfig',
+    'tipos_de_venta.apps.TiposdeventaConfig',
     #REST
     'rest_framework',
     #Djangular
