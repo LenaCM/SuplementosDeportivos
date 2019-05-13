@@ -32,22 +32,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    #'facturaCompra.apps.FacturaCompraConfig',
-    'factura_de_venta.apps.FacturaVentaConfig',
-    'productos.apps.ProductosConfig',
-    'proveedores.apps.ProveedoresConfig',
-    #'mediosDePago.apps.MediosdepagoConfig',
+    #APPS
+    'apps.productos',
+    'apps.proveedores',
+    'apps.factura_de_venta',
+    'apps.factura_de_compra',
     #REST
     'rest_framework',
-    #cors
+    'rest_framework.authtoken',
+    #CORS
     'corsheaders',
     
 ]
@@ -137,12 +137,13 @@ LOGOUT_REDIRECT_URL = 'home'
 #Configuracion REST framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':(
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        #'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.BasicAuthentication',
     ),
 }
 
