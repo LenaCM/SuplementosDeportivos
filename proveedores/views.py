@@ -4,6 +4,10 @@ from .models import Proveedor
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 import json
+from rest_framework import viewsets
+from .serializers import ProveedoresSerializer
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 def index(request):
     objetos = Proveedor.objects.all()
@@ -65,3 +69,9 @@ def buscador(request):
         return HttpResponse(data_json, content_type='application/json')
     else:
         return redirect("proveedores:index")
+    
+class ProveedorViewSet(viewsets.ModelViewSet):
+    serializer_class = ProveedoresSerializer
+    queryset = Proveedor.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,) #para restringir la manipulacion de estos datso en caso que por defecto se permita acceder desde settings

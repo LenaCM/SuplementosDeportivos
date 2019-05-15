@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     #'mediosDePago.apps.MediosdepagoConfig',
     #REST
     'rest_framework',
+    'rest_framework.authtoken',
     #cors
     'corsheaders',
     
@@ -137,13 +138,8 @@ LOGOUT_REDIRECT_URL = 'home'
 #Configuracion REST framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':(
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
+        'rest_framework.permissions.IsAuthenticated', #para realizar cualquier accion sobre los datos se debe estar autorizado
+    )
 }
 
 JWT_AUTH = {
