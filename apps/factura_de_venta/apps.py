@@ -11,4 +11,4 @@ class TipoDeVentaConfig(AppConfig):
     name = 'Tipo de venta'
     
 class MedioDePagoConfig(AppConfig):
-    name = 'Medio de pago'    
+    name = 'Medio de pago' 

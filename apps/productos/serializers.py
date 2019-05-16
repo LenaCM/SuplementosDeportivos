@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from .models import Producto
+from apps.productos.models import Producto
 
 class ProductoSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Producto
         fields = [
+            'id',
             'nombre',
             'descripcion',
             'stock',
@@ -17,4 +18,4 @@ class ProductoSerializer(serializers.ModelSerializer):
         read_only_fields = ['pk']
 
 #esta clase convierte a json y ademas valida  
-# ejemplo de validacion min 21.33      
+# ejemplo de validacion min 21.33     

@@ -1,7 +1,9 @@
-from rest_framework import serializers
+from django.shortcuts import render
 from django.db import models
+from rest_framework import serializers
+
 from apps.productos.models import Producto
-from .models import (
+from apps.factura_de_venta.models import (
     facturaVenta,
     facturaVentaContieneProductos,
     TipoDeVenta,

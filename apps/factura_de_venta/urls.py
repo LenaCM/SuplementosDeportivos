@@ -1,10 +1,22 @@
 from django.urls import path, include
+from rest_framework import routers
+
 from .views import (
-    TipoDeVentaLC,
-    TipoDeVentaRUD,
+    TipoDeVentaViewSet,
+    MedioDePagoViewSet,
+    facturaVentaViewSet,
+    facturaVentaContieneProductosViewSet
 )
 
+router = routers.DefaultRouter()
+router.register('tipo-de-venta', TipoDeVentaViewSet)
+router.register('medio-de-pago', MedioDePagoViewSet)
+router.register('fac-venta', facturaVentaViewSet)
+router.register('fac-venta-prod', facturaVentaContieneProductosViewSet)
+
+
 urlpatterns = [
-    path('', TipoDeVentaLC.as_view(), name='producto-create'),
-    path('<int:pk>/', TipoDeVentaRUD.as_view(), name='producto-rud'),
+    
+    path('', include(router.urls)),
+   
 ]

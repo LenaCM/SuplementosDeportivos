@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+# models.integerfields(validatos=[MinValueValidator(1),MaxValueValidator(5)])
 
 class Producto(models.Model):
     
@@ -16,4 +18,5 @@ class Producto(models.Model):
 
     # metodo string que devuelve el titulo
     def __str__(self):
+
         return self.nombre

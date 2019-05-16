@@ -1,8 +1,13 @@
 from django.urls import path, include
-from .views import ProductoLC, ProductoRUD
+from rest_framework import routers
+
+from .views import ProductoViewSet
+
+router = routers.DefaultRouter()
+router.register('productos', ProductoViewSet)
 
 urlpatterns = [
-   path('', ProductoLC.as_view(), name='producto-create'),
-   path('<int:pk>/', ProductoRUD.as_view(), name='producto-rud'),
+    
+    path('', include(router.urls)),
    
 ]
