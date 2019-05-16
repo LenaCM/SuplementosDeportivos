@@ -1,24 +1,23 @@
-from django.conf.urls import include, url
 from django.contrib import admin
-from . import views
 from django.urls import path, include
-from django.contrib.auth.models import User
-from productos.urls import productos_patterns
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-#from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework import routers
 from .views import UserViewSet, CustomAuthToken
-#from pages.urls import pages_patterns
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
 
 
 urlpatterns = [
+    #admin
     path('admin/', admin.site.urls),
-    path('proveedores/', include('proveedores.urls')),
-    path('auth/', CustomAuthToken.as_view()),
+    #apps
+    path('proveedores/', include('apps.proveedores.urls')),
+    path('productos/', include('apps.productos.urls')),
+    path('facturasVenta/', include('apps.factura_de_venta.urls')),
+    path('facturasCompra/', include('apps.facturaCompra.urls')),
     path('user/', include(router.urls)),
+    #authentication
+    path('auth/', CustomAuthToken.as_view()),
     #path('', include('core.urls')),
     #path('productos/', include(productos_patterns)),
     #path de REST framework

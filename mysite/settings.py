@@ -32,23 +32,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    #'facturaCompra.apps.FacturaCompraConfig',
-    'factura_de_venta.apps.FacturaVentaConfig',
-    'productos.apps.ProductosConfig',
-    'proveedores.apps.ProveedoresConfig',
-    #'mediosDePago.apps.MediosdepagoConfig',
+    #apps
+    'apps.proveedores',
+    'apps.productos',
+    'apps.factura_de_venta',
+    'apps.facturaCompra',
     #REST
     'rest_framework',
     'rest_framework.authtoken',
-    #cors
+    #CORS
     'corsheaders',
     
 ]
@@ -142,13 +140,8 @@ REST_FRAMEWORK = {
     )
 }
 
-JWT_AUTH = {
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3600),
-}
 
-
-#cors
+#CORS
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = (
