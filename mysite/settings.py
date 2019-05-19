@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,20 +32,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'facturaCompra.apps.FacturaCompraConfig',
-    'facturaVenta.apps.FacturaVentaConfig',
-    'productos.apps.ProductosConfig',
-    'proveedores.apps.ProveedoresConfig',
-    'mediosDePago.apps.MediosdepagoConfig',
-    'tiposDeVenta.apps.TiposdeventaConfig',
+    #apps
+    'apps.proveedores',
+    'apps.productos',
+    'apps.factura_de_venta',
+    'apps.facturaCompra',
+    #REST
+    'rest_framework',
+    'rest_framework.authtoken',
+    #CORS
+    'corsheaders',
     
 ]
 
@@ -56,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -127,3 +132,24 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 #Auth redirect
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+#Configuracion REST framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticated', #para realizar cualquier accion sobre los datos se debe estar autorizado
+    )
+}
+
+
+#CORS
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
