@@ -14,7 +14,7 @@ class facturaCompra(models.Model):
         verbose_name_plural = "Facturas de compra"
     
 class facturaCompraContieneProductos(models.Model):
-    idProducto = models.ForeignKey(Producto, on_delete=models.PROTECT, null=True, blank=True, verbose_name="Nombre del producto")
+    idProducto = models.ForeignKey(Producto, on_delete=models.PROTECT,verbose_name="Nombre del producto")
     idFacturaCompra = models.ForeignKey(facturaCompra, on_delete=models.CASCADE)
     precio = models.DecimalField(max_digits=10,decimal_places=2)
     cantidad = models.IntegerField()
