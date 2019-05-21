@@ -14,7 +14,7 @@ urlpatterns = [
     path('proveedores/', include('apps.proveedores.urls')),
     path('productos/', include('apps.productos.urls')),
     path('facturasVenta/', include('apps.factura_de_venta.urls')),
-    path('facturasCompra/', include('apps.facturaCompra.urls')),
+    path('facturasCompra/', include('apps.factura_de_compra.urls')),
     path('user/', include(router.urls)),
     #authentication
     path('auth/', CustomAuthToken.as_view()),

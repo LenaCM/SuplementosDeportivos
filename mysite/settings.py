@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'apps.proveedores',
     'apps.productos',
     'apps.factura_de_venta',
-    'apps.facturaCompra',
+    'apps.factura_de_compra',
     #REST
     'rest_framework',
     'rest_framework.authtoken',
